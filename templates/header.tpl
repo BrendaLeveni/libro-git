@@ -15,7 +15,7 @@
         <link href="templates/css/style2.css" rel="stylesheet"/>
         <link href="templates/css/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body data-admin="{$admin}">
         
         <nav class="navbar navbar-light bg-white static-top">
             <div class="container">

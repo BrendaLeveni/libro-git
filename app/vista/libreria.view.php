@@ -7,6 +7,8 @@ class LibreriaView{
  public function __construct()
  {
      $this->smarty=new Smarty();
+     $this->smarty->assign("admin",$this->esAdmin());
+
  }
 
  public function showInicio($generos){
@@ -15,6 +17,19 @@ class LibreriaView{
     $this->smarty->assign('email', $this->getActiveEmail());
     $this->smarty->display("templates/home.tpl");
 }
+
+private function esAdmin(){
+    if (!isset($_SESSION)){
+        session_start();
+    }
+    if (isset($_SESSION['permisos']) && $_SESSION['permisos']) {
+        return true;
+    } else {
+        return false;
+    }
+} 
+
+
 
 private function getActiveEmail(){
     if (!isset($_SESSION)){
@@ -65,5 +80,25 @@ public function showLibros($generos,$libros){
     $this->smarty->assign('BASE_URL', BASE_URL);
     $this->smarty->display('templates/libros.tpl');
 }
+
+public function mostrarRegistro($mensaje = '',$generos) {
+    $this->smarty->assign('generos', $generos);
+    $this->smarty->assign('titulo','Registrarse');
+    $this->smarty->assign('BASE_URL', BASE_URL);
+    $this->smarty->assign('mensaje', $mensaje);
+    $this->smarty->assign('email', $this->getActiveEmail());
+    $this->smarty->display('templates/registro.tpl');
+
+}
+public function mostrarUsuarios($mensaje = '',$generos, $usuarios) {
+    $this->smarty->assign('generos', $generos);
+    $this->smarty->assign('usuarios', $usuarios);
+    $this->smarty->assign('titulo','Registrarse');
+    $this->smarty->assign('BASE_URL', BASE_URL);
+    $this->smarty->assign('mensaje', $mensaje);
+    $this->smarty->assign('email', $this->getActiveEmail());
+    $this->smarty->display('templates/usuario.tpl');
+}
+
 
 }

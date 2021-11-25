@@ -13,5 +13,15 @@
 <button type="submit">Editar</button>
 </form>
 <a href="libros/{$libro->id_libro}/borrar"><button type="submit">Eliminar</button></a>
+<form id="addComentario">
+<input type="text" name="comentario" id="comentario"/>
+<input type="number" name="puntaje" id="puntaje"/>
+<button type="submit">Enviar</button>
+</form>
 {/if}
+
+<ul id="listaComentario">
+</ul>
+
+<script src="templates/js/scripts.js"></script>
 {include file="footer.tpl"}

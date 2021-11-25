@@ -30,6 +30,21 @@ switch ($params[0]) {
     case 'verificar':
         $userController->verificar();
         break;
+    case 'modificarPermisos':
+        $userController->modificarPermisos();
+        break;
+    case 'registrarse':
+        $userController->showRegistro();
+        break;
+        case 'enviarRegistro':
+            $userController ->registrar();
+            break;
+    case 'listarUsuarios':
+        $userController->listarUsuarios();
+        break;
+    case 'eliminarUsuario':
+        $userController->eliminarUsuario();
+        break;
     case 'home':
         $libreriaControler->showInicio();
         break;
