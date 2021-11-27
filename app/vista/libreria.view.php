@@ -100,5 +100,4 @@ public function mostrarUsuarios($mensaje = '',$generos, $usuarios) {
     $this->smarty->display('templates/usuario.tpl');
 }
 
-
 }

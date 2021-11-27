@@ -68,7 +68,9 @@ class UserController
     }
     public function estaLogueado()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['email'])) {
             return true;
         } else {
@@ -97,14 +99,12 @@ class UserController
             $password = password_hash($userPass, PASSWORD_DEFAULT);
             $this->userModel->AgregarUsuario($userMail, $password);
             $respuesta = $this->verificaUsuarioPass($userMail, $userPass);
-            if($respuesta){
-                header('Location:' . HOME);                
-            }
-            else{
+            if ($respuesta) {
+                header('Location:' . HOME);
+            } else {
                 $this->showRegistro('Error al registrarte');
             }
-        }
-        else{
+        } else {
             $this->showRegistro('Rellene todos los campos');
         }
     }
@@ -120,39 +120,35 @@ class UserController
             $this->view->mostrarRegistro($mensaje, $generos);
         }
     }
-    
-    public function modificarPermisos(){
-        if($this->esAdmin()){
-            $usuario = $_POST ['usuario'];
+
+    public function modificarPermisos()
+    {
+        if ($this->esAdmin()) {
+            $usuario = $_POST['usuario'];
             $this->userModel->modificarPermisos($usuario);
             $this->listarUsuarios('Los permisos fueron modificados');
+        } else {
+            header('Location: ' . HOME);
         }
-        else{
+    }
+    public function listarUsuarios($mensaje = '')
+    {
+        if ($this->esAdmin()) {
+            $usuarios = $this->userModel->traerTodos();
+            $generos = $this->generoModel->traerTodos();
+            $this->view->mostrarUsuarios($mensaje, $generos, $usuarios);
+        } else {
             header('Location: ' . HOME);
         }
     }
 
-    public function listarUsuarios($mensaje = ''){
-        if($this->esAdmin()){
-        $usuarios = $this->userModel->traerTodos();
-        $generos = $this->generoModel->traerTodos();
-        $this->view->mostrarUsuarios($mensaje, $generos, $usuarios);
-        }
-        else{
-            header('Location: ' . HOME);
-        }
-
-    }
-
-    public function eliminarUsuario(){
-        if($this->esAdmin()){
-            $usuario = $_POST ['usuario'];
+    public function eliminarUsuario($usuario)
+    {
+        if ($this->esAdmin()) {
             $this->userModel->eliminarUsuario($usuario);
             $this->listarUsuarios('El usuario fue eliminado');
-        }
-        else{
+        } else {
             header('Location: ' . HOME);
         }
     }
-
 }

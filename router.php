@@ -43,7 +43,7 @@ switch ($params[0]) {
         $userController->listarUsuarios();
         break;
     case 'eliminarUsuario':
-        $userController->eliminarUsuario();
+        $userController->eliminarUsuario($params[1]);
         break;
     case 'home':
         $libreriaControler->showInicio();

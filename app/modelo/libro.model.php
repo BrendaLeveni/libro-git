@@ -50,16 +50,16 @@ class LibroModel
     }
 
     public function agregarUnLibro($titulo,$sinopsis,$cantidad_paginas,$genero){
-        $consulta ="INSERT INTO libro (titulo,sinopsis,cantidad_pagina,genero)
+        $consulta ="INSERT INTO libro (titulo,sinopsis,cant_pag,id_genero)
                     VALUES (?,?,?,?)";
         $consulta = $this->pdo->prepare($consulta);
-        $consulta->execute([$titulo,$sinopsis,$cantidad_paginas,$genero]);//tener en cuenta como estan los parametros
+        $consulta->execute([$titulo,$sinopsis,$cantidad_paginas,$genero]);
         return $consulta;
     }
 
     public function editarLibro($id,$titulo,$sinopsis,$cantidad_paginas,$genero){
         $consulta = "UPDATE libro
-                     SET titulo=?,sinopsis=?,cantidad_pagina=?,genero=? 
+                     SET titulo=?,sinopsis=?,cant_pag=?,id_genero=? 
                      WHERE id_libro=?";
         $consulta = $this->pdo->prepare($consulta);
         $consulta->execute([$titulo,$sinopsis,$cantidad_paginas,$genero,$id]);

@@ -10,6 +10,11 @@
 <input type="text" name="titulo" value="{$libro->titulo}"/>
 <input type="text" name="sinopsis" value="{$libro->sinopsis}"/>
 <input type="number" name="cantidad_paginas" value="{$libro->cant_pag}"/>
+<select name="genero">
+{foreach $generos as $genero}
+    <option value="{$genero->id_genero}">{$genero->nombre}</option>
+{/foreach}
+</select>
 <button type="submit">Editar</button>
 </form>
 <a href="libros/{$libro->id_libro}/borrar"><button type="submit">Eliminar</button></a>

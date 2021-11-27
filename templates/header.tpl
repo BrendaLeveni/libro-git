@@ -25,6 +25,9 @@
                 {foreach $generos as $genero}
                     <a class="navbar-brand" href="generos/{$genero->id_genero}">{$genero->nombre}</a>
                 {/foreach}
+                {if $admin eq 1}
+                 <a class ="btn btn-primary" href="listarUsuarios">Usuarios</a>
+                {/if}
                 {if $email}
                     <a class ="btn btn-primary" href="logout">Desconectarse</a>
                 {else}

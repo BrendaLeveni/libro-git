@@ -47,7 +47,8 @@ $this->verificarSesion();
     $titulo = $_POST ["titulo"];
     $sinopsis = $_POST ["sinopsis"];
     $cantidad_paginas = $_POST ["cantidad_paginas"];
-    $genero = $_POST ["genero"];
+    $genero = $_POST ["id_genero"];
+ 
     $this->libroModel->agregarUnLibro($titulo,$sinopsis,$cantidad_paginas,$genero);
     header('Location:'. BASE_URL."libros" );
 }
@@ -66,7 +67,7 @@ public function editarUnLibro($id_libro){
     $cantidad_paginas = $_POST ["cantidad_paginas"];
     $genero = $_POST ["genero"];
     $this->libroModel->editarLibro($id_libro,$titulo,$sinopsis,$cantidad_paginas,$genero);
-    header('Location:'. BASE_URL."libros" );
+    header('Location:'. BASE_URL."libros/$id_libro" );
 }
 
 public function borrarUnLibro($id_libro){
@@ -86,7 +87,7 @@ public function editarUnGenero($id_genero){
     $this->verificarSesion();
     $nombre = $_POST ["nombre"];
     $this->generoModel->editargenero($id_genero,$nombre);
-    header('Location:'. BASE_URL."generos" );
+    header('Location:'. BASE_URL."generos/$id_genero" );
 }
 
 public function borrarGenero($id_genero){
@@ -94,7 +95,5 @@ public function borrarGenero($id_genero){
     $this->generoModel->eliminarGenero($id_genero);
     header('Location:'. BASE_URL."generos" );
 }
-
-
 
 }
