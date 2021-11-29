@@ -50,19 +50,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
         let res = await req.json();
         getComentarios();
     }
-   
+
     async function borrarComentario(e) {
-            let id_comentario = e.target.dataset.id;
-            let req = await fetch(url + id + "/" + id_comentario, {
-                method : "DELETE"
-            });
-            let res = await req.json();
-            getComentarios();
+        let id_comentario = e.target.dataset.id;
+        let req = await fetch(url + id + "/" + id_comentario, {
+            method: "DELETE"
+        });
+        let res = await req.json();
+        getComentarios();
     }
 
 });
-
-
-
-
-

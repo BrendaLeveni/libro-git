@@ -1,8 +1,94 @@
+body {
+    background-image: linear-gradient(to left, rgba(255, 146, 202, 0.75) 0%, rgba(145, 149, 251, 0.86) 100%);
+    text-align: left;
+    font-family: Arial Black;
+    font-weight: bold;
+    font-size: 30px;
+    color: #fff;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 
-p , h1,h2{
-    color: coral;
+}
+
+p, h1, h2, label, #addComentario {
+    color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 15px;
+    margin: 10px;
     text-align: center;
 }
 
+
+
+input {
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 7px;
+    background: #eee;
+    padding: 1em 2em;
+    outline: none;
+    border: none;
+    color: #222;
+    transition: 0.3s linear;
+}
+
+::placeholder {
+    color: #999;
+}
+
+input:focus {
+    background: rgba(0, 0, 333, 0.10);
+}
+
+button {
+    /* background-image: linear-gradient(to left, rgba(255, 146, 202, 0.75) 0%, rgba(145, 149, 251, 0.86) 100%);*/
+    box-shadow: 0 9px 25px -5px #df91fb;
+    font-family: 'Abel', sans-serif;
+    padding: 0.5em 1.9em;
+    margin: 2.3em 0 0 0;
+    border-radius: 7px;
+    font-size: 1.4em;
+    cursor: pointer;
+    color: black;
+    font-size: 1em;
+    outline: none;
+    border: none;
+    transition: 0.3s linear;
+
+}
+
+button:hover {
+    transform: translatey(2px);
+}
+
+button:active {
+    transform: translatey(5px);
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista li {
+    font-family: Georgia, serif, Times;
+    font-size: 18px;
+
+}
+
+.lista li a {
+    display: block;
+    width: 300px;
+    height: 28px;
+    padding-left: 10px;
+    text-decoration: none;
+    color: #0c0c0c;
+}
+
+.lista li a:hover {
+    -moz-transform: rotate(-5deg);
+    -moz-box-shadow: 10px 10px 20px #e78d8d;
+    -webkit-transform: rotate(-5deg);
+    -webkit-box-shadow: 10px 10px 20px #f09b9b;
+    transform: rotate(4deg);
+    box-shadow: 10px 10px 20px #fab4b4;
+    margin-left: 10px;
+}
